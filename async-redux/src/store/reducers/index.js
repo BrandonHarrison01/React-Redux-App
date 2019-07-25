@@ -1,9 +1,9 @@
-import { FETCH_CHARACTER_START } from '../actions'
+import { FETCH_CHARACTER_START, FETCH_CHARACTER_SUCCESS } from '../actions'
 
 const initialState = {
     error: '',
     fetching: false,
-    characters: null
+    characters: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -13,7 +13,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 error: '',
                 fetching: true,
-                characters: null
+                characters: []
+            };
+        case FETCH_CHARACTER_SUCCESS:
+            return {
+                ...state,
+                error: '',
+                fetching: false,
+                characters: action.payload
             };
         default:
             return state;

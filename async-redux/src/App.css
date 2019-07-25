@@ -1,3 +1,17 @@
 .App {
   text-align: center;
 }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.character-card {
+  border: 2px solid black;
+  width: 350px;
+  margin: 20px 0;
+  color: white;
+  background-color: #444;
+}
