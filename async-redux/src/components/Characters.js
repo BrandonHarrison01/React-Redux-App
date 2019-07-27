@@ -5,20 +5,36 @@ import { fetchCharacter } from '../store/actions'
 import Character from './Character'
 
 class Characters extends React.Component {
+    state = { count: 1 }
 
     componentDidMount() {
-        this.props.fetchCharacter()
+        this.props.fetchCharacter(this.state.count)
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count){
+            this.props.fetchCharacter(this.state.count)
+        }
+    }
+
+    increment = () => {
+        this.setState({ count: this.state.count + 1 })
+    }  
+
+    decrement = () => {
+        this.setState({ count: this.state.count - 1 })
+    }    
     
     render() {
-        console.log('characters: ', this.props.characters)
+        console.log('Count: ', this.state.count)
         return(
             <div>
-                <h2>characters</h2>
                 {this.props.fetching && <h2>loading...</h2>}
                 <div className='cards'>
-                    {this.props.characters && this.props.characters.map(character => <Character key={character.id} character={character} />)}
+                <Character history={this.props.history} />
                 </div>
+                {this.state.count > 1 && <button onClick={() => this.decrement()}>Previous Page</button>}
+                <button onClick={() => this.increment()}>Next Page</button>
             </div>
         )
     }
@@ -29,7 +45,6 @@ const mapStateToProps = state => {
     return {
         error: state.error,
         fetching: state.fetching,
-        characters: state.characters
     }
 }
 
