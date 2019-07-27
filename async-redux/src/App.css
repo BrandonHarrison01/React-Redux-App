@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+h1 {
+  /* text-shadow: 3px 3px 10px  */
+  color: rgb(102, 173, 255);
+}
+
+.character-card {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 350px;
+  margin: 20px 0;
+  color: white;
+  background-color: #444;
+  box-shadow: 4px 4px 10px green;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 1rem;
+}
